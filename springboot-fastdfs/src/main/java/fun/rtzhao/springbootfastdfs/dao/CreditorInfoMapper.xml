@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fun.rtzhao.springbootfastdfs.dao.CreditorInfoMapper">
+  <resultMap id="BaseResultMap" type="fun.rtzhao.springbootfastdfs.model.CreditorInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="remote_file_path" jdbcType="VARCHAR" property="remoteFilePath" />
+    <result column="old_file_name" jdbcType="VARCHAR" property="oldFileName" />
+    <result column="file_size" jdbcType="BIGINT" property="fileSize" />
+    <result column="file_type" jdbcType="VARCHAR" property="fileType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, real_name, id_card, address, sex, phone, money, group_name, remote_file_path,
+    old_file_name, file_size, file_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from creditor_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from creditor_info
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from creditor_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="fun.rtzhao.springbootfastdfs.model.CreditorInfo">
+    insert into creditor_info (id, real_name, id_card,
+      address, sex, phone,
+      money, group_name, remote_file_path,
+      old_file_name, file_size, file_type
+      )
+    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR},
+      #{money,jdbcType=DECIMAL}, #{groupName,jdbcType=VARCHAR}, #{remoteFilePath,jdbcType=VARCHAR},
+      #{oldFileName,jdbcType=VARCHAR}, #{fileSize,jdbcType=BIGINT}, #{fileType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="fun.rtzhao.springbootfastdfs.model.CreditorInfo">
+    insert into creditor_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="groupName != null">
+        group_name,
+      </if>
+      <if test="remoteFilePath != null">
+        remote_file_path,
+      </if>
+      <if test="oldFileName != null">
+        old_file_name,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteFilePath != null">
+        #{remoteFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="oldFileName != null">
+        #{oldFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="fun.rtzhao.springbootfastdfs.model.CreditorInfo">
+    update creditor_info
+    <set>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteFilePath != null">
+        remote_file_path = #{remoteFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="oldFileName != null">
+        old_file_name = #{oldFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="fun.rtzhao.springbootfastdfs.model.CreditorInfo">
+    update creditor_info
+    set real_name = #{realName,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      group_name = #{groupName,jdbcType=VARCHAR},
+      remote_file_path = #{remoteFilePath,jdbcType=VARCHAR},
+      old_file_name = #{oldFileName,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=BIGINT},
+      file_type = #{fileType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

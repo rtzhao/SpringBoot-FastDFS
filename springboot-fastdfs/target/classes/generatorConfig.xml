@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 相应 数据库驱动-->
+    <!--    <classPathEntry location="E:\Eclipse\driver\mysql-connector-java-5.1.7-bin.jar"/>-->
+    <classPathEntry
+            location="D:\develop\Java\MySql Connector Java 5.1.23\MySql Connector Java 5.1.23\mysql-connector-java-5.1.23-bin.jar"/>
+
+    <context id="mysqltables" targetRuntime="MyBatis3" defaultModelType="conditional">
+        <!-- 注释生成-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:Mysql://127.0.0.1/fastdfs?characterEncoding=utf8" userId="root"
+                        password="333">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="fun.rtzhao.springbootfastdfs.model" targetProject="src/main/java">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 给Model添加一个父类 -->
+            <!--<property name="rootClass" value="com.tantela.model.page.PageBean"/>-->
+        </javaModelGenerator>
+
+        <!-- 生成映射文件的包名和位置 sql文件-->
+        <sqlMapGenerator targetPackage="fun.rtzhao.springbootfastdfs.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成DAO的包名和位置 mapper接口-->
+        <!--
+          type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+          type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+          type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+         -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="fun.rtzhao.springbootfastdfs.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 要生成哪些表-->
+        <!--        <table tableName="ygc_original_data1" domainObjectName="YgcOriginalData1" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <table tableName="creditor_info" domainObjectName="CreditorInfo" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+
+
+    </context>
+</generatorConfiguration>
